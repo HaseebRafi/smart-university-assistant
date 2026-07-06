@@ -25,7 +25,9 @@ html, body, [class*="css"] {
 p, span, label, li, div {
     color: var(--text);
 }
-
+div{
+   color: var(--nextext);
+}
 h1, h2, h3 {
     font-family: 'Source Serif 4', serif !important;
     letter-spacing: 0.01em;
