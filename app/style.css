@@ -1,0 +1,643 @@
+/* ============================================================
+   Smart University Assistant — "Academic Ledger" theme
+   Colors are CSS custom properties (--bg, --surface, --accent, etc.)
+   The actual values for dark vs light mode are injected as a small
+   :root{...} block from app.py based on the sidebar toggle — this
+   file only ever references var(--token), so it never needs to be
+   duplicated per mode. See PALETTES in app.py to change colors.
+   Type: Source Serif 4 (headers) / IBM Plex Sans (body) / IBM Plex Mono (data)
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+html, body, [class*="css"] {
+    font-family: 'IBM Plex Sans', sans-serif;
+}
+
+[data-testid="stAppViewContainer"], [data-testid="stHeader"] {
+    background-color: var(--bg) !important;
+    color: var(--text) !important;
+}
+[data-testid="stSidebar"] {
+    background-color: var(--sidebar-bg) !important;
+    border-right: 1px solid var(--border);
+}
+p, span, label, li, div {
+    color: var(--text);
+}
+
+h1, h2, h3 {
+    font-family: 'Source Serif 4', serif !important;
+    letter-spacing: 0.01em;
+    color: var(--text) !important;
+}
+h1 { border-bottom: 2px solid var(--accent); padding-bottom: 0.4rem; }
+
+.eyebrow, .sidebar-nav-title {
+    font-family: 'IBM Plex Mono', monospace;
+    letter-spacing: 0.18em;
+    font-size: 0.72rem;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: -0.6rem;
+}
+.sidebar-nav-title { margin: 0.8rem 0 0.4rem 0; }
+
+[data-testid="stSidebar"] .stButton button {
+    font-family: 'IBM Plex Sans', sans-serif;
+    text-align: left;
+    justify-content: flex-start;
+    border-radius: 4px;
+    margin-bottom: 0.2rem;
+    transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+[data-testid="stSidebar"] button[kind="primary"] {
+    background-color: var(--accent) !important;
+    color: var(--btn-text) !important;
+    border: 1px solid var(--accent) !important;
+    font-weight: 600;
+}
+[data-testid="stSidebar"] button[kind="secondary"] {
+    background-color: transparent !important;
+    color: var(--text) !important;
+    border: 1px solid var(--border) !important;
+}
+[data-testid="stSidebar"] button[kind="secondary"]:hover {
+    background-color: var(--surface) !important;
+    border-color: var(--accent) !important;
+}
+
+[data-testid="stVerticalBlockBorderWrapper"] {
+    background-color: var(--surface);
+    border-color: var(--border) !important;
+    border-radius: 8px;
+}
+
+div[data-testid="stMetric"] {
+    background-color: var(--surface) !important;
+    border-top: 3px solid var(--accent);
+    border-radius: 6px;
+    padding: 0.9rem 1rem 0.7rem 1rem;
+}
+div[data-testid="stMetricLabel"] {
+    font-family: 'IBM Plex Mono', monospace;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    font-size: 0.7rem !important;
+    color: var(--muted) !important;
+}
+div[data-testid="stMetricValue"] {
+    font-family: 'Source Serif 4', serif;
+    color: var(--text) !important;
+}
+
+.risk-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: 'IBM Plex Mono', monospace;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    padding: 0.45rem 0.9rem;
+    border-radius: 999px;
+    border: 1.5px solid;
+}
+.risk-badge.high   { color: var(--high-text);   border-color: var(--high);  background: var(--high-bg); }
+.risk-badge.medium { color: var(--med-text);    border-color: var(--med);   background: var(--med-bg); }
+.risk-badge.low    { color: var(--low-text);    border-color: var(--low);   background: var(--low-bg); }
+.risk-badge .dot { width: 8px; height: 8px; border-radius: 50%; background: currentColor; }
+
+.stButton > button {
+    font-family: 'IBM Plex Sans', sans-serif;
+    background-color: var(--accent);
+    color: var(--btn-text);
+    border: none;
+    border-radius: 4px;
+    font-weight: 600;
+}
+.stButton > button:hover { filter: brightness(1.1); }
+
+[data-testid="stTable"] th, [data-testid="stDataFrame"] th {
+    background-color: var(--surface) !important;
+    color: var(--accent) !important;
+    font-family: 'IBM Plex Mono', monospace !important;
+    font-size: 0.78rem !important;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.answer-card {
+    background-color: var(--surface);
+    border-left: 3px solid var(--accent);
+    border-radius: 4px;
+    padding: 1rem 1.2rem;
+    font-family: 'IBM Plex Sans', sans-serif;
+    color: var(--text);
+}
+
+.premium-header { display: flex; align-items: center; }
+.premium-page-title { font-family: 'Source Serif 4', serif; color: var(--text); }
+.premium-divider { height: 1px; background: var(--border); margin: 0.6rem 0 1.2rem 0; }
+.premium-welcome { text-align: center; padding: 2rem 0 1rem 0; }
+.premium-gradient-text {
+    font-family: 'Source Serif 4', serif;
+    font-size: 2.4rem;
+    background: linear-gradient(90deg, var(--accent), var(--text));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 0.2rem;
+}
+.premium-subtitle {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-weight: 400;
+    color: var(--muted);
+    font-size: 1.1rem;
+}
+.premium-meta-card { margin-top: 0.5rem; display: flex; gap: 0.5rem; flex-wrap: wrap; }
+.premium-meta-badge {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    color: var(--muted);
+    padding: 0.25rem 0.6rem;
+    border-radius: 999px;
+}
+[data-testid="stChatMessage"] {
+    background-color: var(--surface);
+    border-radius: 10px;
+    border: 1px solid var(--border);
+}
+
+
+
+
+/* ============================================================
+   🎬 APP-WIDE ANIMATIONS
+   ============================================================ */
+
+/* ---------- Keyframe Definitions ---------- */
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.92);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes gradientShimmer {
+    0% {
+        background-position: -200% center;
+    }
+
+    100% {
+        background-position: 200% center;
+    }
+}
+
+@keyframes pulseGlow {
+
+    0%,
+    100% {
+        box-shadow: 0 0 8px rgba(201, 162, 75, 0.15);
+    }
+
+    50% {
+        box-shadow: 0 0 20px rgba(201, 162, 75, 0.3);
+    }
+}
+
+@keyframes dotPulse {
+
+    0%,
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 0.5;
+        transform: scale(1.5);
+    }
+}
+
+@keyframes subtleFloat {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-4px);
+    }
+}
+
+@keyframes borderGlow {
+
+    0%,
+    100% {
+        border-color: rgba(255, 255, 255, 0.08);
+    }
+
+    50% {
+        border-color: rgba(201, 162, 75, 0.25);
+    }
+}
+
+@keyframes sidebarSlideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes ripple {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(0.97);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes skeletonPulse {
+
+    0%,
+    100% {
+        opacity: 0.6;
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
+
+/* ---------- Page-Level Entrance ---------- */
+
+/* Main content area fades and slides up on load */
+[data-testid="stMain"]>div {
+    animation: slideUp 0.6s ease-out both;
+}
+
+/* ---------- Sidebar Animations ---------- */
+
+/* Sidebar itself slides in from the left */
+[data-testid="stSidebar"]>div {
+    animation: sidebarSlideIn 0.5s ease-out both;
+}
+
+/* Stagger sidebar nav buttons */
+[data-testid="stSidebar"] div.stButton:nth-child(1) {
+    animation: sidebarSlideIn 0.4s ease-out 0.05s both;
+}
+
+[data-testid="stSidebar"] div.stButton:nth-child(2) {
+    animation: sidebarSlideIn 0.4s ease-out 0.1s both;
+}
+
+[data-testid="stSidebar"] div.stButton:nth-child(3) {
+    animation: sidebarSlideIn 0.4s ease-out 0.15s both;
+}
+
+[data-testid="stSidebar"] div.stButton:nth-child(4) {
+    animation: sidebarSlideIn 0.4s ease-out 0.2s both;
+}
+
+[data-testid="stSidebar"] div.stButton:nth-child(5) {
+    animation: sidebarSlideIn 0.4s ease-out 0.25s both;
+}
+
+[data-testid="stSidebar"] div.stButton:nth-child(6) {
+    animation: sidebarSlideIn 0.4s ease-out 0.3s both;
+}
+
+/* Sidebar buttons — smooth hover transition */
+[data-testid="stSidebar"] div.stButton>button {
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+[data-testid="stSidebar"] div.stButton>button:hover {
+    transform: translateX(4px) !important;
+}
+
+[data-testid="stSidebar"] div.stButton>button:active {
+    animation: ripple 0.3s ease !important;
+}
+
+/* ---------- Metric Cards ---------- */
+
+/* Staggered entrance for metric columns */
+div[data-testid="stMetric"] {
+    animation: scaleIn 0.5s ease-out both;
+}
+
+div[data-testid="stHorizontalBlock"]>div:nth-child(1) div[data-testid="stMetric"] {
+    animation-delay: 0.1s;
+}
+
+div[data-testid="stHorizontalBlock"]>div:nth-child(2) div[data-testid="stMetric"] {
+    animation-delay: 0.2s;
+}
+
+div[data-testid="stHorizontalBlock"]>div:nth-child(3) div[data-testid="stMetric"] {
+    animation-delay: 0.3s;
+}
+
+div[data-testid="stHorizontalBlock"]>div:nth-child(4) div[data-testid="stMetric"] {
+    animation-delay: 0.4s;
+}
+
+/* Metric card hover lift with glow */
+div[data-testid="stMetric"]:hover {
+    transform: translateY(-4px) !important;
+    box-shadow: 0 8px 25px rgba(201, 162, 75, 0.15) !important;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+/* ---------- Glassy Containers ---------- */
+
+/* Border containers animate in with a stagger */
+div[data-testid="stVerticalBlockBorder"] {
+    animation: slideUp 0.5s ease-out 0.15s both;
+    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+div[data-testid="stVerticalBlockBorder"]:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25) !important;
+    border-color: rgba(201, 162, 75, 0.2) !important;
+}
+
+/* ---------- Answer Card Animations ---------- */
+
+.answer-card {
+    animation: slideUp 0.5s ease-out 0.2s both;
+    transition: all 0.35s ease !important;
+}
+
+.answer-card:hover {
+    animation: pulseGlow 2s ease-in-out infinite;
+    transform: translateY(-2px);
+    border-color: rgba(201, 162, 75, 0.3) !important;
+}
+
+/* ---------- Risk Badge Animations ---------- */
+
+.risk-badge {
+    animation: scaleIn 0.4s ease-out 0.3s both;
+    transition: all 0.3s ease !important;
+}
+
+.risk-badge:hover {
+    transform: scale(1.05);
+}
+
+/* Pulsing risk indicator dot */
+.risk-badge .dot {
+    animation: dotPulse 2s ease-in-out infinite;
+}
+
+.risk-badge.high .dot {
+    animation-duration: 1s;
+}
+
+.risk-badge.medium .dot {
+    animation-duration: 1.5s;
+}
+
+/* ---------- Chat Message Animations ---------- */
+
+/* Chat messages slide in from alternating sides */
+div[data-testid="stChatMessage"] {
+    animation: slideUp 0.4s ease-out both;
+    transition: all 0.3s ease !important;
+}
+
+/* User messages slide from right */
+div[data-testid="stChatMessage"]:has(span[data-testid="stChatMessageAvatarUser"]) {
+    animation: slideInRight 0.4s ease-out both;
+}
+
+/* Assistant messages slide from left */
+div[data-testid="stChatMessage"]:has(svg),
+div[data-testid="stChatMessage"]:has(span:not([data-testid="stChatMessageAvatarUser"])) {
+    animation: slideInLeft 0.4s ease-out both;
+}
+
+div[data-testid="stChatMessage"]:hover {
+    transform: translateX(4px) !important;
+    border-color: rgba(201, 162, 75, 0.15) !important;
+}
+
+/* Chat meta card */
+.premium-meta-card {
+    animation: fadeIn 0.5s ease-out 0.3s both;
+    transition: all 0.3s ease !important;
+}
+
+.premium-meta-card:hover {
+    border-color: rgba(201, 162, 75, 0.3);
+    background: rgba(16, 25, 46, 0.8);
+}
+
+/* ---------- Chat Input Animation ---------- */
+
+div[data-testid="stChatInput"] {
+    animation: slideUp 0.5s ease-out 0.3s both;
+    border: 0px !important;
+}
+
+/* ---------- Gradient Text Shimmer ---------- */
+
+.premium-gradient-text {
+    background-size: 200% auto !important;
+    animation: gradientShimmer 4s linear infinite, fadeIn 0.8s ease-out both !important;
+}
+
+/* ---------- Welcome Section ---------- */
+
+.premium-welcome .premium-subtitle {
+    animation: fadeIn 0.8s ease-out 0.3s both;
+}
+
+/* ---------- Suggestion Cards ---------- */
+
+/* Staggered entrance for suggestion cards */
+div.stHorizontalBlock>div:nth-child(1) div.stButton {
+    animation: slideUp 0.4s ease-out 0.15s both;
+}
+
+div.stHorizontalBlock>div:nth-child(2) div.stButton {
+    animation: slideUp 0.4s ease-out 0.25s both;
+}
+
+div.stHorizontalBlock>div:nth-child(3) div.stButton {
+    animation: slideUp 0.4s ease-out 0.35s both;
+}
+
+div.stHorizontalBlock>div:nth-child(4) div.stButton {
+    animation: slideUp 0.4s ease-out 0.45s both;
+}
+
+/* Suggestion card active press */
+div.stHorizontalBlock div.stButton>button:active {
+    transform: scale(0.97) !important;
+    transition: transform 0.1s ease !important;
+}
+
+/* ---------- Header & Title Animations ---------- */
+
+/* Page titles slide in */
+h1 {
+    animation: slideUp 0.5s ease-out both;
+}
+
+h2,
+h3 {
+    animation: fadeIn 0.5s ease-out 0.1s both;
+}
+
+/* Eyebrow labels */
+.eyebrow {
+    animation: slideInLeft 0.4s ease-out both;
+}
+
+/* Premium divider line draws in */
+.premium-divider {
+    animation: fadeIn 0.6s ease-out 0.2s both;
+    background-size: 200% 100%;
+}
+
+/* ---------- Tables & DataFrames ---------- */
+
+[data-testid="stTable"],
+[data-testid="stDataFrame"] {
+    animation: slideUp 0.5s ease-out 0.2s both;
+}
+
+[data-testid="stTable"] tr {
+    transition: all 0.25s ease !important;
+}
+
+[data-testid="stTable"] tr:hover {
+    background: rgba(201, 162, 75, 0.08) !important;
+    transform: scale(1.01);
+}
+
+/* ---------- Charts & Images ---------- */
+
+[data-testid="stVegaLiteChart"],
+[data-testid="stImage"] {
+    animation: scaleIn 0.5s ease-out 0.2s both;
+}
+
+/* ---------- Form Inputs ---------- */
+
+div[data-baseweb="select"]>div {
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+div[data-testid="stSlider"] {
+    animation: fadeIn 0.4s ease-out 0.2s both;
+}
+
+/* ---------- Buttons — General ---------- */
+
+.stButton>button {
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    position: relative;
+    overflow: hidden;
+}
+
+.stButton>button:active {
+    transform: scale(0.96) !important;
+    transition: transform 0.1s ease !important;
+}
+
+/* ---------- Scrollbar Styling ---------- */
+
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: #10192E;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(201, 162, 75, 0.3);
+    border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(201, 162, 75, 0.5);
+}
+
+/* ---------- Reduced Motion Preference ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}

@@ -1,0 +1,69 @@
+[
+  {
+    "model": "Logistic Regression",
+    "accuracy": 0.7575,
+    "precision": 0.7021276595744681,
+    "recall": 0.7630057803468208,
+    "f1": 0.7313019390581718,
+    "roc_auc": 0.8402383438160475,
+    "confusion_matrix": [
+      [
+        171,
+        56
+      ],
+      [
+        41,
+        132
+      ]
+    ],
+    "cv_f1_mean": 0.742531514282514
+  },
+  {
+    "model": "Random Forest (tuned, ensemble)",
+    "accuracy": 0.77,
+    "precision": 0.7368421052631579,
+    "recall": 0.7283236994219653,
+    "f1": 0.7325581395348837,
+    "roc_auc": 0.843777851340684,
+    "confusion_matrix": [
+      [
+        182,
+        45
+      ],
+      [
+        47,
+        126
+      ]
+    ],
+    "cv_f1_mean": 0.7556167983663816,
+    "best_params": {
+      "max_depth": 6,
+      "min_samples_leaf": 3,
+      "n_estimators": 300
+    }
+  },
+  {
+    "model": "Gradient Boosting (tuned, ensemble)",
+    "accuracy": 0.765,
+    "precision": 0.7423312883435583,
+    "recall": 0.6994219653179191,
+    "f1": 0.7202380952380952,
+    "roc_auc": 0.8373609024470983,
+    "confusion_matrix": [
+      [
+        185,
+        42
+      ],
+      [
+        52,
+        121
+      ]
+    ],
+    "cv_f1_mean": 0.7462148472573493,
+    "best_params": {
+      "learning_rate": 0.05,
+      "max_depth": 2,
+      "n_estimators": 200
+    }
+  }
+]

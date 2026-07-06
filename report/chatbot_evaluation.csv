@@ -1,0 +1,31 @@
+question,answer,confidence,matched_faq_id,category,source,test_type,is_fallback
+Do I need to submit an SOP for admission?,A statement of purpose is required for most postgraduate and research-based program applications.,1.0,FAQ081,Admissions,Admission Policy,similar,False
+Can I bring my own stationery to the exam hall?,Students must bring their own stationery; sharing of stationery during exams is not permitted.,1.0,FAQ085,Examinations,Examination Policy,similar,False
+Can I get attendance relaxation for medical reasons?,Medical leave supported by a valid certificate can be considered for attendance relaxation on a case-by-case basis.,1.0,FAQ034,Attendance,Attendance Policy,similar,False
+Is there an education loan facility?,The university partners with select banks to offer education loan facilities to eligible students.,1.0,FAQ082,Fee and Finance,Fee Policy,similar,False
+Can I check my attendance for a specific course only?,The learning management system allows filtering the attendance report by individual course.,1.0,FAQ094,Attendance,Attendance Policy,similar,False
+What is the semester fee structure?,"Semester fees include tuition, examination, and library charges, and vary by program and credit hours.",1.0,FAQ018,Fee and Finance,Fee Policy,similar,False
+Does online class attendance count?,Attendance in scheduled online sessions is recorded the same way as in-person attendance.,1.0,FAQ037,Attendance,Attendance Policy,similar,False
+Can I audit a course without credit?,Auditing a course is allowed with instructor permission but does not count toward degree credit hours.,1.0,FAQ083,Course Registration,Registration Guide,similar,False
+What happens if I return a book late?,A small daily fine is charged for each day a book is returned after the due date.,1.0,FAQ070,Library Services,Library Services Guide,similar,False
+What happens if my project is not completed on time?,"An incomplete grade may be issued with an extension period, after which the project must be resubmitted.",1.0,FAQ066,Final-Year Projects,Final Year Project Guide,similar,False
+What is the difference between a core and elective course?,"Core courses are compulsory for your degree, while electives can be chosen from a list of optional subjects.",1.0,FAQ093,Course Registration,Registration Guide,similar,False
+What is the minimum passing percentage?,"Students must obtain at least 50 percent marks in a course to pass, unless stated otherwise for a specific program.",1.0,FAQ040,Examinations,Examination Policy,similar,False
+Is an internship mandatory for graduation?,Most undergraduate programs require a mandatory internship of six to eight weeks before the final semester.,1.0,FAQ057,Internships,Internship Policy,similar,False
+Are scholarships available for postgraduate students?,A limited number of research-based scholarships are available for postgraduate and doctoral students.,1.0,FAQ053,Scholarships,Scholarship Policy,similar,False
+Can I apply for a scholarship after the first semester?,Continuing students can apply for scholarships in subsequent semesters if they meet the eligibility criteria.,1.0,FAQ052,Scholarships,Scholarship Policy,similar,False
+How do I apply to the university?,Scholarship applications are submitted through the financial aid office along with supporting income documents.,0.425,FAQ049,Scholarships,Scholarship Policy,paraphrased,False
+What percentage do I need to pass a course?,A formal written report following the department's format guidelines must be submitted alongside the project defense.,0.428,FAQ067,Final-Year Projects,Final Year Project Guide,paraphrased,False
+Can my fee be split into payments?,Instalment requests are subject to approval from the finance office and are usually split into two payments per semester.,0.408,FAQ012,Fee and Finance,Fee Policy,paraphrased,False
+How do I sign up for classes?,Scholarship applications are submitted through the financial aid office along with supporting income documents.,0.43,FAQ049,Scholarships,Scholarship Policy,paraphrased,False
+What's the required attendance percentage?,I could not find a sufficiently reliable answer. Please contact the relevant university office or rephrase your question.,0.393,,,,paraphrased,True
+How can I get money in the form of a scholarship?,I could not find a sufficiently reliable answer. Please contact the relevant university office or rephrase your question.,0.297,,,,paraphrased,True
+Where do I look for internship opportunities?,Internship listings are posted by the career services office and are also shared through the student portal.,0.692,FAQ056,Internships,Career Services Guide,paraphrased,False
+How do I get more time on an assessment?,I could not find a sufficiently reliable answer. Please contact the relevant university office or rephrase your question.,0.37,,,,paraphrased,True
+What time does the library close?,The main library is open from 8 AM to 10 PM on weekdays and 9 AM to 5 PM on weekends.,0.419,FAQ068,Library Services,Library Services Guide,paraphrased,False
+Is there parking on campus for students?,"Designated student parking areas are available near the main campus gates, subject to a parking permit.",0.549,FAQ079,Campus Facilities,Campus Facilities Guide,paraphrased,False
+Tell me tomorrow's weather.,I could not find a sufficiently reliable answer. Please contact the relevant university office or rephrase your question.,0.074,,,,out_of_scope,True
+What is the capital of France?,I could not find a sufficiently reliable answer. Please contact the relevant university office or rephrase your question.,0.385,,,,out_of_scope,True
+Can you recommend a good pizza place?,I could not find a sufficiently reliable answer. Please contact the relevant university office or rephrase your question.,0.188,,,,out_of_scope,True
+Write me a poem about the ocean.,I could not find a sufficiently reliable answer. Please contact the relevant university office or rephrase your question.,0.183,,,,out_of_scope,True
+What's the score of last night's football game?,I could not find a sufficiently reliable answer. Please contact the relevant university office or rephrase your question.,0.375,,,,out_of_scope,True

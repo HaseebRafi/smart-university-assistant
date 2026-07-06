@@ -1,0 +1,26 @@
+{
+  "model_importance": {
+    "avg_assessment_score": 0.3206147636520987,
+    "min_assessment_score": 0.23996753081221817,
+    "avg_clicks_per_active_day": 0.13121758151953292,
+    "total_clicks": 0.07502922334490511,
+    "active_days": 0.03180328963265537,
+    "resource_diversity": 0.031623861706121796,
+    "early_engagement": 0.021021613065201082,
+    "assessment_trend": 0.01921484379402133,
+    "registration_duration": 0.016996754924655487,
+    "date_registration": 0.016741093656420167
+  },
+  "permutation_importance": {
+    "avg_assessment_score": 0.06682006442705939,
+    "min_assessment_score": 0.04841233317993562,
+    "active_days": 0.005123485197116173,
+    "submission_delay": 0.0012271820831416536,
+    "code_presentation_2014B": 0.0006749501457279372,
+    "date_registration": 0.0006135910415708601,
+    "num_of_prev_attempts": 0.0004601932811781562,
+    "registration_duration": 0.0003374750728639686,
+    "code_presentation_2014J": 0.00026077619266759997,
+    "highest_education_HE Qualification": 0.00024543641662835294
+  }
+}
