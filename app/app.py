@@ -3,7 +3,7 @@ app.py
 ------
 Module 7: Application and Dashboard (Streamlit).
 
-Run with:  streamlit run app/app.py    (from the projects root)
+Run with:  streamlit run app/app.py    (from the project root)
 """
 import os
 import sys
