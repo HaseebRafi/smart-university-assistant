@@ -8,7 +8,7 @@ as a cross-check) across the whole test set.
 Local explanation: for one student, shows which of their own feature values
 pushed the prediction toward "at risk", using the trained tree ensemble's
 per-feature contribution (a lightweight, dependency-free stand-in for SHAP —
-swap in the `shap` library directly if it is installed in your environment).
+swap in the `shap` library directly if it's installed in your environment).
 """
 import os
 import json
