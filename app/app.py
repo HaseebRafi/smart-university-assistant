@@ -145,15 +145,15 @@ if page == "Home":
 elif page == "Student Dashboard":
     eyebrow("Student Record")
     st.title("Student Dashboard")
-    # High-performance search & filter optimization
+    # High-performance dropdown optimization: defaults to top 100 but fits any valid match
     all_students = df["id_student"].unique().tolist()
-    search_id_dash = st.text_input("🔍 Search Student ID directly (Optional):", value="", key="search_dash")
+    default_options = all_students[:100]
     
-    if search_id_dash and search_id_dash.isdigit() and int(search_id_dash) in all_students:
-        student_id = int(search_id_dash)
-        st.success(f"Loaded Student ID: {student_id}")
-    else:
-        student_id = st.selectbox("Select a student (Showing top 100 sample)", all_students[:100], key="select_dash")
+    student_id = st.selectbox(
+        "Select a student", 
+        options=default_options,
+        help="Showing top 100 students to optimize performance."
+    )
     row = df[df.id_student == student_id].iloc[0]
 
     c1, c2, c3, c4 = st.columns(4)
@@ -181,14 +181,14 @@ elif page == "Prediction":
     mode = st.radio("Input mode", ["Select existing student", "Enter manually"])
 
     if mode == "Select existing student":
-        all_students = df["id_student"].unique().tolist()
-        search_id_pred = st.text_input("🔍 Search Student ID directly (Optional):", value="", key="search_pred")
-        
-        if search_id_pred and search_id_pred.isdigit() and int(search_id_pred) in all_students:
-            student_id = int(search_id_pred)
-            st.success(f"Loaded Student ID: {student_id}")
-        else:
-            student_id = st.selectbox("Student (Showing top 100 sample)", all_students[:100], key="select_pred")
+       all_students = df["id_student"].unique().tolist()
+        default_options = all_students[:100]
+
+        student_id = st.selectbox(
+            "Student", 
+            options=default_options,
+            help="Showing top 100 students to optimize performance."
+        )
         if st.button("Predict risk"):
             exp = explain_student(int(student_id), df_m, X_m, model_m, feature_cols_m)
             level = "High" if exp["risk_probability"] >= 0.66 else ("Medium" if exp["risk_probability"] >= 0.33 else "Low")
@@ -216,13 +216,14 @@ elif page == "Learning Recommendations":
     eyebrow("Personalized Guidance")
     st.title("Personalized Learning Recommendations")
     all_students = df["id_student"].unique().tolist()
-    search_id_rec = st.text_input("🔍 Search Student ID directly (Optional):", value="", key="search_rec")
-    
-    if search_id_rec and search_id_rec.isdigit() and int(search_id_rec) in all_students:
-        student_id = int(search_id_rec)
-        st.success(f"Loaded Student ID: {student_id}")
-    else:
-        student_id = st.selectbox("Select a student (Showing top 100 sample)", all_students[:100], key="rec_student")
+    default_options = all_students[:100]
+
+    student_id = st.selectbox(
+        "Select a student", 
+        options=default_options, 
+        key="rec_student",
+        help="Showing top 100 students to optimize performance."
+    )
     row = df[df.id_student == student_id].iloc[0]
     topic_hint = st.text_input("Weak topic (optional hint)", "Classification")
 
