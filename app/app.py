@@ -15,7 +15,7 @@ import streamlit as st
 sys.path.append(os.path.join(os.path.dirname(__file__), "..", "src"))
 from chatbot import FAQChatbot
 from recommender import ResourceRecommender
-from explainability import local_explanation, load_everything as load_model_everything
+from explainability import explain_student, load_everything as load_model_everything
 
 BASE = os.path.join(os.path.dirname(__file__), "..")
 
@@ -33,8 +33,8 @@ PALETTES = {
     },
     "light": {
         "bg": "#FAF8F3", "surface": "#FFFFFF", "sidebar-bg": "#F1ECDD",
-        "border": "#DED5BE", "accent": "#C9A247", "btn-text": "#FFFFFF",
-        "text": "#1E2433", "muted": "#5B6472","newtext": "#FFFFFF",
+        "border": "#DED5BE", "accent": "#8A6A1F", "btn-text": "#FFFFFF",
+        "text": "#1E2433", "muted": "#5B6472", "newtext": "#FFFFFF",
         "high": "#9C3A32", "high-bg": "rgba(156,58,50,0.08)", "high-text": "#7A2C26",
         "med": "#8A6A1F", "med-bg": "rgba(138,106,31,0.10)", "med-text": "#6B5217",
         "low": "#3F6656", "low-bg": "rgba(63,102,86,0.10)", "low-text": "#2F4D42",
@@ -87,10 +87,13 @@ def load_recommender():
 
 
 @st.cache_resource
-def load_model():
-    model = joblib.load(os.path.join(BASE, "models", "risk_prediction_model.pkl"))
-    feature_cols = joblib.load(os.path.join(BASE, "models", "feature_columns.pkl"))
-    return model, feature_cols
+def get_model_bundle():
+    """Loads the encoded feature table + model ONCE per app instance and keeps
+    it in memory. This is what makes student selection fast: without this,
+    every click would re-read the (potentially 30,000+ row) encoded CSV from
+    disk and re-deserialize the model from scratch, which is what was causing
+    the app to hang on Student Dashboard / Prediction / Recommendations."""
+    return load_model_everything()
 
 
 df = load_features()
@@ -151,16 +154,14 @@ elif page == "Student Dashboard":
     c3.metric("Active days", int(row["active_days"]))
     c4.metric("Final result", row["final_result"])
 
-    model, feature_cols = load_model()
-    proba = model.predict_proba(pd.get_dummies(df, columns=[c for c in [
-        "gender", "region", "highest_education", "imd_band", "age_band", "disability",
-        "code_module", "code_presentation"] if c in df.columns], drop_first=True)
-        .reindex(columns=feature_cols, fill_value=0).loc[[row.name]])[0][1]
+    df_m, X_m, y_m, model_m, feature_cols_m = get_model_bundle()
+    row_idx = df_m.index[df_m.id_student == student_id][0]
+    proba = model_m.predict_proba(X_m.loc[[row_idx]])[0][1]
     st.metric("Predicted risk probability", f"{proba:.1%}")
     level = "High" if proba >= 0.66 else ("Medium" if proba >= 0.33 else "Low")
     st.markdown(risk_badge_html(level), unsafe_allow_html=True)
 
-    exp = local_explanation(int(student_id))
+    exp = explain_student(int(student_id), df_m, X_m, model_m, feature_cols_m)
     st.subheader("Why this prediction?")
     st.markdown(f'<div class="answer-card">{exp["explanation_text"]}</div>', unsafe_allow_html=True)
 
@@ -168,12 +169,13 @@ elif page == "Student Dashboard":
 elif page == "Prediction":
     eyebrow("Risk Assessment")
     st.title("Student Risk Prediction")
+    df_m, X_m, y_m, model_m, feature_cols_m = get_model_bundle()
     mode = st.radio("Input mode", ["Select existing student", "Enter manually"])
 
     if mode == "Select existing student":
         student_id = st.selectbox("Student", df["id_student"].unique())
         if st.button("Predict risk"):
-            exp = local_explanation(int(student_id))
+            exp = explain_student(int(student_id), df_m, X_m, model_m, feature_cols_m)
             level = "High" if exp["risk_probability"] >= 0.66 else ("Medium" if exp["risk_probability"] >= 0.33 else "Low")
             st.metric("Prediction", exp["prediction"])
             st.metric("Risk probability", f"{exp['risk_probability']:.1%}")
@@ -186,7 +188,7 @@ elif page == "Prediction":
         prev_attempts = st.slider("Number of previous attempts", 0, 3, 0)
         if st.button("Predict (manual)"):
             approx = df.iloc[(df["avg_assessment_score"] - avg_score).abs().argsort()[:1]]
-            exp = local_explanation(int(approx.iloc[0]["id_student"]))
+            exp = explain_student(int(approx.iloc[0]["id_student"]), df_m, X_m, model_m, feature_cols_m)
             level = "High" if exp["risk_probability"] >= 0.66 else ("Medium" if exp["risk_probability"] >= 0.33 else "Low")
             st.write("Closest matching profile in the dataset was used for this demo prediction:")
             st.metric("Prediction", exp["prediction"])
