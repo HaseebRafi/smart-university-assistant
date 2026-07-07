@@ -26,11 +26,8 @@ p, span, label, li, div {
     color: var(--text);
 }
 div{
-<<<<<<< Updated upstream
    color: var(--nextext);
-=======
-    color: var(--newtext);
->>>>>>> Stashed changes
+
 }
 h1, h2, h3 {
     font-family: 'Source Serif 4', serif !important;
