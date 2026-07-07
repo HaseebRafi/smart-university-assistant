@@ -81,6 +81,16 @@ def global_explanation(top_n: int = 10):
 
 def local_explanation(id_student: int, top_n: int = 5) -> dict:
     df, X, y, model, feature_cols = load_everything()
+    result = explain_student(id_student, df, X, model, feature_cols, top_n=top_n)
+    print(result["explanation_text"])
+    return result
+
+
+def explain_student(id_student: int, df, X, model, feature_cols, top_n: int = 5) -> dict:
+    """Same logic as local_explanation(), but takes already-loaded data/model
+    so repeated calls (e.g. one per Streamlit interaction) don't re-read the
+    CSV and re-deserialize the model from disk every time. Use load_everything()
+    once (cached) and call this function per student."""
     row_idx = df.index[df.id_student == id_student]
     if len(row_idx) == 0:
         raise ValueError(f"Student {id_student} not found")
@@ -118,7 +128,6 @@ def local_explanation(id_student: int, top_n: int = 5) -> dict:
         "; ".join(readable) + "."
     )
 
-    print(explanation_text)
     return {
         "id_student": id_student,
         "prediction": prediction,
