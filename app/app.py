@@ -33,7 +33,7 @@ PALETTES = {
     },
     "light": {
         "bg": "#FAF8F3", "surface": "#FFFFFF", "sidebar-bg": "#F1ECDD",
-        "border": "#DED5BE", "accent": "#8A6A1F", "btn-text": "#FFFFFF",
+        "border": "#DED5BE", "accent": "#C9A247", "btn-text": "#FFFFFF",
         "text": "#1E2433", "muted": "#5B6472", "newtext": "#FFFFFF",
         "high": "#9C3A32", "high-bg": "rgba(156,58,50,0.08)", "high-text": "#7A2C26",
         "med": "#8A6A1F", "med-bg": "rgba(138,106,31,0.10)", "med-text": "#6B5217",
