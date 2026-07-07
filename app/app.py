@@ -181,7 +181,7 @@ elif page == "Prediction":
     mode = st.radio("Input mode", ["Select existing student", "Enter manually"])
 
     if mode == "Select existing student":
-       all_students = df["id_student"].unique().tolist()
+        all_students = df["id_student"].unique().tolist()
         default_options = all_students[:100]
 
         student_id = st.selectbox(
