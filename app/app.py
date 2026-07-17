@@ -138,7 +138,7 @@ if page == "Home":
         with st.container(border=True):
             st.subheader("Team Info")
             st.write("- Students Name : Abdul Haseeb, Sheeza Batool")
-            st.write("- Student Portal ID : ACA942, ACA821")
+            st.write("- Student Portal IDs : ACA942, ACA821")
             st.write("- Course: Artificial Intelligence")
             
 
