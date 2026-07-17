@@ -136,9 +136,12 @@ if page == "Home":
             st.write(f"- At-risk rate: {df['At_Risk'].mean():.1%}")
     with col2:
         with st.container(border=True):
-            st.subheader("Student Info")
+            st.subheader("Team Info")
             st.write("- Student Name : Abdul Haseeb")
             st.write("- Student Portal ID : ACA942")
+            st.write("- Course: Artificial Intelligence")
+            st.write("- Student Name : Sheeza Batool")
+            st.write("- Student Portal ID : ACA821")
             st.write("- Course: Artificial Intelligence")
 
 # ---------------------------------------------------------------- Student Dashboard
