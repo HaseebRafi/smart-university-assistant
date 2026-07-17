@@ -137,12 +137,10 @@ if page == "Home":
     with col2:
         with st.container(border=True):
             st.subheader("Team Info")
-            st.write("- Student Name : Abdul Haseeb")
-            st.write("- Student Portal ID : ACA942")
+            st.write("- Students Name : Abdul Haseeb, Sheeza Batool")
+            st.write("- Student Portal ID : ACA942, ACA821")
             st.write("- Course: Artificial Intelligence")
-            st.write("- Student Name : Sheeza Batool")
-            st.write("- Student Portal ID : ACA821")
-            st.write("- Course: Artificial Intelligence")
+            
 
 # ---------------------------------------------------------------- Student Dashboard
 elif page == "Student Dashboard":
